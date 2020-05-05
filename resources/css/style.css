@@ -1,0 +1,22 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+.glyphicon-remove {
+    color: red;
+    font-size: 14px;
+}
+
+.glyphicon-pencil {
+    color: #383744;
+    font-size: 14px;
+}
+
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form {
+    width: 450px;
+}

@@ -5,6 +5,7 @@
         <th>Nombre</th>
         <th>Año</th>
         <th>Precio</th>
+        <th>Plataforma</th>
         @if (Auth::check())
             <th>Options</th>
         @endif
@@ -16,6 +17,7 @@
                 <td>{{$juego->nombre_juego}}</td>
                 <td>{{$juego->year_juego}}</td>
                 <td>{{$juego->precio_juego}}€</td>
+                <td>{{$juego->nombre_plataforma}}</td>
                 @if (Auth::check())
                     <td>
                         <a href='/juegos/update/{{$juego->id}}' class='update_juego'><span

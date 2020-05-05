@@ -20,16 +20,22 @@ Route::get('/', function () {
 
 //LISTADO DE JUEGOS
 Route::get('/juegos', function () {
-    $listado = App\juegos::all();
+
+    $listado = App\juegos::join('plataformas', 'juegos.plataforma_id', '=', 'plataformas.id')
+        ->select('juegos.id', 'nombre_juego', 'year_juego', 'precio_juego', 'nombre_plataforma')
+        ->get();
     return view('juegos', array('listado' => $listado));
 
 
 });
+
 //LISTADO JUEGOS WHERE LIKE NOMBRE
 Route::get('/juegos/{nombre}', function ($nombre) {
     $listado = App\juegos::where('nombre_juego', 'like', '%' . $nombre . '%')->get();
     return view('juegos', array('listado' => $listado));
 });
+
+
 //LISTADO DE PLATAFORMAS
 Route::get('/plataformas', function () {
     $listado = App\plataformas::all();
@@ -67,7 +73,6 @@ Route::get('/nuevo/juego/insert', function (Request $request) {
 
 //FORM MODIFICAR JUEGO
 Route::get('/juegos/update/{id}', function ($id) {
-
     $listado = App\juegos::where('id', $id)->get();
     return view('juegosUpdate', array('listado' => $listado[0]));
 

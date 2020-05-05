@@ -4,7 +4,7 @@
         <thead>
         <th>Nombre</th>
         <th>Año</th>
-
+        <th>Precio</th>
         </thead>
         <tbody>
 
@@ -12,7 +12,7 @@
             <tr>
                 <td>{{$plataforma->nombre_plataforma}}</td>
                 <td>{{$plataforma->year_plataforma}}</td>
-
+                <td>{{$plataforma->precio_plataforma}}€</td>
             </tr>
         @endforeach
 

@@ -1,5 +1,17 @@
 <div class="container" style="position: relative;top: 100px;">
+
     <h2>Listado de juegos</h2>
+    <form action="/juegos/buscar" class="p-10 form-inline">
+
+        <div class="form-group ">
+
+            <input type="text" name="buscador_juego" class="form-control">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
     <table id="datatable">
         <thead>
         <th>Nombre</th>
@@ -29,9 +41,12 @@
 
                 @endif
             </tr>
+
         @endforeach
 
         </tbody>
     </table>
+    <div class="container-fluid">{{ $listado->links() }}</div>
 
 </div>
+

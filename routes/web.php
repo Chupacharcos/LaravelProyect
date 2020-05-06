@@ -23,12 +23,23 @@ Route::get('/juegos', function () {
 
     $listado = App\juegos::join('plataformas', 'juegos.plataforma_id', '=', 'plataformas.id')
         ->select('juegos.id', 'nombre_juego', 'year_juego', 'precio_juego', 'nombre_plataforma')
-        ->get();
+        ->paginate(1);
     return view('juegos', array('listado' => $listado));
 
 
 });
+Route::get('/juegos/buscar', function (Request $request) {
+    $nombre_juego = $request->input("buscador_juego");
+    $listado = App\juegos::join('plataformas', 'juegos.plataforma_id', '=', 'plataformas.id')
+        ->select('juegos.id', 'nombre_juego', 'year_juego', 'precio_juego', 'nombre_plataforma')
+        ->where('nombre_juego', 'like', '%' . $nombre_juego . '%')
+        ->paginate(1);
 
+
+    return view('juegos', array('listado' => $listado));
+
+
+});
 //LISTADO JUEGOS WHERE LIKE NOMBRE
 Route::get('/juegos/{nombre}', function ($nombre) {
     $listado = App\juegos::where('nombre_juego', 'like', '%' . $nombre . '%')->get();
